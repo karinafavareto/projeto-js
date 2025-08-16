@@ -9,5 +9,63 @@
     <h1>Semana 1</h1>
     
     <a href="index.html">Voltar</a>
+
+    <script>
+        //exercício 1
+        let num1 = prompt("Ex01: Digite um número inteiro e positivo: ");
+        if(num1 > 0 && num1 % 1 === 0){ //igualdade estrita - compara o valor e também o tipo de dado das duas variáveis
+            if(num1 % 2 == 0){
+                alert("O número "+num1+"  é par.");
+            } else {
+                alert("O número "+num1+"  é ímpar.");
+            }
+        } else {
+            alert("Número inválido.");
+        }
+
+        //exercício 2
+        let num2;
+
+        do {
+            num2 = prompt("Ex02: Digite um número inteiro e positivo: ");
+        } while(num2 < 0 || num2 % 1 != 0 || num2 == 0);
+ 
+        let ehPrimo = true;
+        for (let i = 2; i < num2; i++) { //i inicia em 2 pq primos são maiores que 1
+            if (num2 % i === 0) {
+                ehPrimo = false;
+                break; //se encontrar outro divisor, o loop para
+            }
+        }
+
+        if (ehPrimo) {
+            alert("O número " + num2 + " é primo.");
+        } else {
+            alert("O número " + num2 + " não é primo.");
+        }
+
+        //exercicio 3
+        let num3;
+
+        do {
+            num3 = prompt("Ex03: Digite um número inteiro e positivo: ");
+        } while(num3 < 0 || num3 % 1 != 0);
+
+        let total = 1;
+        for(let j = 1; j <= num3; j++){
+            total = total * j;
+        }
+        alert("O fatorial de "+num3+" é "+total);
+    
+        //exercício 4
+        let dado = prompt("Ex04: Digite algum dado:");
+        let verificar = confirm("Deseja verificar o tipo do dado digitado?");
+        if (verificar) {
+            let tipoDoDado = typeof dado;
+            document.write("O tipo do dado é: " + tipoDoDado);
+        } else {
+            document.write("<br>Obrigada por visitar esta página!");
+        }
+    </script>
 </body>
 </html>
