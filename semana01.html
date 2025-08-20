@@ -61,11 +61,15 @@
         let dado = prompt("Ex04: Digite algum dado:");
         let verificar = confirm("Deseja verificar o tipo do dado digitado?");
         if (verificar) {
-            let tipoDoDado = typeof dado;
-            document.write("O tipo do dado é: " + tipoDoDado);
+            if (!isNaN(dado) && dado.trim() !== '') {
+                document.write("<br>O tipo do dado é: número");
+            } else {
+                document.write("<br>O tipo do dado é: texto");
+            }
         } else {
             document.write("<br>Obrigada por visitar esta página!");
         }
     </script>
 </body>
+
 </html>
