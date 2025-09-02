@@ -3,133 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividades de JavaScript</title>
     <link rel="stylesheet" href="style.css">
+    <title>Atividades de JavaScript</title>
 </head>
 <body>
-    <header class="header-container">
-        <h1>LABORATÓRIO DE ENGENHARIA DE SOFTWARE</h1>
-        <div class="fatec-logo">FATEC</div>
-    </header>
+    <h1>Semana 3</h1>
+    <ul id="lista"></ul>
+    <h1>Crie sua playlist!</h1>
 
-    <main class="content-area">
-        <h1>Semana 3</h1>
-        <h3>Crie sua playlist!</h3>
+    <h3>Adicionar Música</h3>
+    <input type="text" id="titulo" placeholder="Título da música">
+    <input type="text" id="artista" placeholder="Artista">
+    <button onclick="adicionar()">Adicionar</button>
+    <p id="mensagem"></p>
 
-        <div class="secao-adicionar">
-            <h4>Adicionar Música</h4>
-            <input type="text" id="titulo" placeholder="Título da música">
-            <input type="text" id="artista" placeholder="Artista">
-            <button onclick="adicionar()">Adicionar</button>
-        </div>
-        
-        <div class="secao-gerenciar">
-            <h4>Gerenciar Playlist</h4>
-            <p>Use a barra de pesquisa ou os botões para gerenciar a lista:</p>
-            <input type="text" id="gerenciarMusica" placeholder="Pesquisar por título ou artista">
-            
-            <div class="menu-horizontal">
-                <button onclick="filtrar()">Filtrar</button>
-                <button onclick="ordenar()">Ordenar</button>
-                <button onclick="mostrar()">Mostrar Playlist Completa</button>
-            </div>
-        </div>
+    <h3>Gerenciar Playlist</h3>
+    <p>Digite o título da música ou nome do artista que deseja gerenciar:</p>
+    <input type="text" id="gerenciarMusica" placeholder="Título da música">
+    <div class="menu-horizontal">
+        <button onclick="excluir()">Excluir</button>
+        <button onclick="editar()">Editar</button>
+        <button onclick="filtrar()">Filtrar</button>
+        <button onclick="ordenar()">Ordenar</button>
+        <button onclick="mostrar()">Mostrar Playlist Completa</button>
+    </div>
 
-        <p id="mensagem"></p>
-
-        <div class="secao-playlist">
-            <h3>Minha Playlist</h3>
-            <ul id="lista"></ul>
-        </div>
-    </main>
-    
-    <footer class="footer">
-        <p>&copy; 2024 Laboratório de Engenharia de Software. Todos os direitos reservados.</p>
-        <a href="index.html">Voltar para a página principal</a>
-    </footer>
+    <ul id="lista"></ul>
 
     <script>
-        const playlist = [];
-        const mensagemElemento = document.getElementById('mensagem');
-    
-        function adicionar() {
-            const titulo = document.getElementById('titulo').value.trim();
-            const artista = document.getElementById('artista').value.trim();
-    
-            if (titulo && artista) {
-                playlist.push({ titulo, artista });
-                mensagemElemento.textContent = `"${titulo}" de ${artista} foi adicionada à playlist.`;
-                document.getElementById('titulo').value = '';
-                document.getElementById('artista').value = '';
-                mostrar();
-            } else {
-                mensagemElemento.textContent = 'Por favor, preencha o título e o artista.';
-            }
-        }
-    
-        function excluir(index) {
-            const musicaRemovida = playlist.splice(index, 1)[0];
-            mensagemElemento.textContent = `"${musicaRemovida.titulo}" de ${musicaRemovida.artista} foi removida.`;
+    const playlist = [];
+
+    const mensagemElemento = document.getElementById('mensagem');
+
+    function adicionar() {
+        const titulo = document.getElementById('titulo').value;
+        const artista = document.getElementById('artista').value;
+
+        if (titulo && artista) { // Garante que os campos não estão vazios.
+            const musica = { titulo: titulo, artista: artista };
+            playlist.push(musica);
+            mensagemElemento.textContent = `"${titulo}" de ${artista} foi adicionada.`;
+            document.getElementById('titulo').value = ''; // Limpa o campo do título.
+            document.getElementById('artista').value = ''; // Limpa o campo do artista.
             mostrar();
+        } else {
+            mensagemElemento.textContent = 'Por favor, preencha todos os campos.';
         }
-    
-        function editar(index) {
-            const novoTitulo = prompt("Digite o novo título da música:", playlist[index].titulo);
-            const novoArtista = prompt("Digite o novo artista:", playlist[index].artista);
-            if (novoTitulo && novoArtista) {
-                playlist[index].titulo = novoTitulo;
-                playlist[index].artista = novoArtista;
-                mensagemElemento.textContent = 'Música editada com sucesso!';
-                mostrar();
-            } else {
-                mensagemElemento.textContent = 'Edição cancelada.';
-            }
-        }
-    
-        function filtrar() {
-            const termo = document.getElementById('gerenciarMusica').value.toLowerCase().trim();
-            if (termo) {
-                const resultadoFiltrado = playlist.filter(musica =>
-                    musica.titulo.toLowerCase().includes(termo) || musica.artista.toLowerCase().includes(termo)
-                );
-                mensagemElemento.textContent = `Exibindo ${resultadoFiltrado.length} resultado(s) para "${termo}".`;
-                mostrar(resultadoFiltrado);
-            } else {
-                mensagemElemento.textContent = 'Por favor, digite um termo para filtrar.';
-                mostrar();
-            }
-        }
-    
-        function ordenar() {
-            playlist.sort((a, b) => a.titulo.localeCompare(b.titulo));
-            mensagemElemento.textContent = 'Playlist ordenada por título.';
+    }
+
+    function excluir() {
+        const tituloParaExcluir = document.getElementById('gerenciarMusica').value;
+        // Encontra o índice da música. O `findIndex` é mais eficiente que o `indexOf` para objetos.
+        const indice = playlist.findIndex(musica => musica.titulo === tituloParaExcluir);
+
+        if (indice !== -1) {
+            playlist.splice(indice, 1);
+            mensagemElemento.textContent = `"${tituloParaExcluir}" foi removida.`;
             mostrar();
+        } else {
+            mensagemElemento.textContent = `Música não encontrada.`;
         }
-    
-        function mostrar(listaParaExibir = playlist) {
-            const listaElemento = document.getElementById('lista');
-            listaElemento.innerHTML = '';
-    
-            if (listaParaExibir.length === 0) {
-                mensagemElemento.textContent = 'A playlist está vazia.';
+        document.getElementById('gerenciarMusica').value = '';
+    }
+
+    function editar() {
+        const tituloAntigo = document.getElementById('gerenciarMusica').value;
+        const novoTitulo = prompt("Digite o novo título da música:");
+        const novoArtista = prompt("Digite o novo artista:");
+
+        if (novoTitulo && novoArtista) {
+            const indice = playlist.findIndex(musica => musica.titulo === tituloAntigo);
+
+            if (indice !== -1) {
+                playlist[indice].titulo = novoTitulo;
+                playlist[indice].artista = novoArtista;
+                mensagemElemento.textContent = `"${tituloAntigo}" foi editada.`;
+                mostrar();
             } else {
-                for (let i = 0; i < listaParaExibir.length; i++) {
-                    const musica = listaParaExibir[i];
-                    const item = document.createElement("li");
-                    item.innerHTML = `
-                        <div class="item-info">
-                            <span class="musica-titulo">${musica.titulo}</span>
-                            <span class="musica-artista">${musica.artista}</span>
-                        </div>
-                        <div class="botoes-musica">
-                            <button onclick="editar(${i})">Editar</button>
-                            <button onclick="excluir(${i})">Excluir</button>
-                        </div>
-                    `;
-                    listaElemento.appendChild(item);
-                }
+                mensagemElemento.textContent = 'Música não encontrada para edição.';
+            }
+        } else {
+            mensagemElemento.textContent = 'Edição cancelada ou campos vazios.';
+        }
+        document.getElementById('gerenciarMusica').value = '';
+    }
+
+    function ordenar() {
+        // Usa uma função de comparação para ordenar por título.
+        playlist.sort((a, b) => a.titulo.localeCompare(b.titulo));
+        mensagemElemento.textContent = 'Playlist ordenada por título.';
+        mostrar();
+    }
+
+    function filtrar() {
+        const termo = document.getElementById('gerenciarMusica').value.toLowerCase();
+        
+        if (termo) {
+            // Usa o `filter` para criar um novo array.
+            const resultadoFiltrado = playlist.filter(musica => 
+                musica.titulo.toLowerCase().includes(termo) || musica.artista.toLowerCase().includes(termo)
+            );
+
+            mensagemElemento.textContent = `Exibindo ${resultadoFiltrado.length} resultado(s) para "${termo}".`;
+            // Exibe o resultado filtrado.
+            mostrar(resultadoFiltrado);
+        } else {
+            mensagemElemento.textContent = 'Por favor, digite um termo para filtrar.';
+        }
+    }
+
+    function mostrar(listaParaExibir = playlist) {
+        const listaElemento = document.getElementById('lista');
+        listaElemento.innerHTML = ''; // Limpa a lista antes de exibir.
+
+        if (listaParaExibir.length === 0) {
+            mensagemElemento.textContent = 'A playlist está vazia.';
+        } else {
+            for (const musica of listaParaExibir) {
+                const item = document.createElement("li");
+                item.textContent = `${musica.titulo} - ${musica.artista}`;
+                listaElemento.appendChild(item);
             }
         }
+    }
     </script>
+
+    <a href="index.html">Voltar</a>
 </body>
 </html>
