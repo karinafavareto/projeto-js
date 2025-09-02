@@ -3,26 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Atividades de JavaScript</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Semana 2</h1>
+    <header class="header-container">
+        <h1>LABORATÓRIO DE ENGENHARIA DE SOFTWARE</h1>
+        <div class="fatec-logo">FATEC</div>
+    </header>
 
-    <h3>Exercício 1: Data Formatada</h3>
-    <p id="data"></p>
+    <main class="content-area">
+        <h1>Semana 2</h1>
+        
+        <div class="secao">
+            <h3>Exercício 1: Data Formatada</h3>
+            <p id="data"></p>
+        </div>
 
-    <h3>Exercício 2: Relógio Digital</h3>
-    <div id="relogio"></div>
+        <div class="secao">
+            <h3>Exercício 2: Relógio Digital</h3>
+            <div id="relogio"></div>
+        </div>
 
-    <h3>Exercício 3: Verificador de Palíndromo</h3>
-    <input type="text" id="palindromo" class="campo" placeholder="Digite uma palavra ou frase">
-    <button class="botao" onclick="verificarPalindromo()">Verificar</button>
+        <div class="secao">
+            <h3>Exercício 3: Verificador de Palíndromo</h3>
+            <input type="text" id="palindromo" placeholder="Digite uma palavra ou frase">
+            <button onclick="verificarPalindromo()">Verificar</button>
+            <p id="mensagem-palindromo"></p>
+        </div>
 
-    <br><br><a href="index.html">Voltar</a>
+        <a href="index.html">Voltar para a página principal</a>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Laboratório de Engenharia de Software. Todos os direitos reservados.</p>
+    </footer>
 
     <script>
-
         //exercício 1
         const hoje = new Date();
         const opcoesData = {
@@ -48,9 +65,9 @@
             const textoTratado = textoOriginal.toLowerCase().replace(/[^a-z0-9]/g, '');
             const textoInvertido = textoTratado.split('').reverse().join('');
             if (textoTratado === textoInvertido) {
-                alert('"' + textoOriginal + '" é um palíndromo!');
+                alert('\"' + textoOriginal + '\" é um palíndromo!');
             } else {
-                alert('"' + textoOriginal + '" não é um palíndromo.');
+                alert('\"' + textoOriginal + '\" não é um palíndromo.');
             }
         }
     </script>

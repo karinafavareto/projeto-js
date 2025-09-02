@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Atividades de JavaScript</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Semana 1</h1>
+    <header class="header-container">
+        <h1>LABORATÓRIO DE ENGENHARIA DE SOFTWARE</h1>
+        <div class="fatec-logo">FATEC</div>
+    </header>
+
+    <main class="content-area">
+        <h1>Semana 1</h1>
+        <a href="index.html">Voltar para a página principal</a>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Laboratório de Engenharia de Software. Todos os direitos reservados.</p>
+    </footer>
 
     <script>
         //exercício 1
@@ -60,17 +72,20 @@
         let dado = prompt("Ex04: Digite algum dado:");
         let verificar = confirm("Deseja verificar o tipo do dado digitado?");
         if (verificar) {
-            if (!isNaN(dado) && dado.trim() !== '') {
-                document.write("O tipo do dado é: número <br>");
-            } else {
-                document.write("O tipo do dado é: texto <br>");
+            if (typeof dado == 'string' && dado == '') {
+                alert("O dado digitado é do tipo: String Vazia");
             }
-        } else {
-            document.write("<br>Obrigada por visitar esta página!");
+            if (typeof dado == 'string') {
+                alert("O dado digitado é do tipo: String");
+            }
+        }
+
+        //exercício 5
+        let num5 = 1;
+        while(num5 <= 10){
+            console.log(num5);
+            num5++;
         }
     </script>
-    
-    <a href="index.html">Voltar</a>
 </body>
-
 </html>
