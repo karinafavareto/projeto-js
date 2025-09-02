@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+/* Paleta de Cores: #102E50, #F5C45E, #E78B48, #BE3D2A */
+
+/* Estilos globais e para a página index.html */
+body {
+    font-family: 'Varela Round', sans-serif;
+    background-color: #102E50; /* Fundo azul escuro */
+    color: #E78B48; /* Cor principal de texto (laranja) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+.header-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 2px solid #F5C45E;
+}
+
+.header-container h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #F5C45E;
+}
+
+.header-container .fatec-logo {
+    width: 50px;
+    height: 50px;
+    background-color: #BE3D2A;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #102E50;
+    font-weight: bold;
+}
+
+.title-main {
+    font-size: 2rem;
+    color: #F5C45E;
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+
+.title-subtitle {
+    font-size: 1.2rem;
+    color: #E78B48;
+    margin-bottom: 30px;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(245, 196, 94, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px #F5C45E;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 15px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #102E50;
+    background-color: #E78B48;
+    padding: 15px 30px;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #BE3D2A;
+    color: #102E50;
+    transform: scale(1.05);
+}
+
+.footer {
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: #E78B48;
+}
+
+/* Estilos para as páginas de semanas (semana01, semana02, semana03) */
+.content-area {
+    width: 80%;
+    max-width: 800px;
+    background-color: rgba(231, 139, 72, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px #E78B48;
+    margin-top: 20px;
+}
+
+h1, h3 { 
+    color: #F5C45E;
+}
+
+p {
+    color: #E78B48;
+}
+
+input[type="text"], input[type="number"] {
+    background-color: transparent;
+    border: 2px solid #F5C45E;
+    color: #E78B48;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]::placeholder, input[type="number"]::placeholder {
+    color: #E78B48;
+    opacity: 0.7;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #BE3D2A;
+}
+
+/* Alteração para criar espaço visual entre as seções */
+.content-area > h4:not(:first-of-type) {
+    margin-top: 40px;
+}
+
+button {
+    background-color: #E78B48; /* Fundo mais claro */
+    color: #102E50; /* Texto mais escuro para melhor contraste */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #BE3D2A;
+    color: #102E50;
+    transform: translateY(-3px);
+}
+
+hr {
+    border: 1px solid #F5C45E;
+    width: 80%;
+    margin: 30px 0;
+}
+
+/* Estilos específicos para a playlist (semana03.html) */
+#lista {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left;
+}
+
+#lista li {
+    background-color: rgba(231, 139, 72, 0.1);
+    border: 1px solid #E78B48;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+#lista li:hover {
+    background-color: rgba(231, 139, 72, 0.2);
+}
+
+#lista li:before {
+    content: "🎶";
+    margin-right: 10px;
+    color: #F5C45E;
+}
+
+#mensagem {
+    color: #E78B48;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.menu-horizontal {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}

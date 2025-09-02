@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Atividades de JavaScript</title>
 </head>
 <body>
     <h1>Semana 1</h1>
-    
-    <a href="index.html">Voltar</a>
 
     <script>
         //exercício 1
@@ -62,14 +61,16 @@
         let verificar = confirm("Deseja verificar o tipo do dado digitado?");
         if (verificar) {
             if (!isNaN(dado) && dado.trim() !== '') {
-                document.write("<br>O tipo do dado é: número");
+                document.write("O tipo do dado é: número <br>");
             } else {
-                document.write("<br>O tipo do dado é: texto");
+                document.write("O tipo do dado é: texto <br>");
             }
         } else {
             document.write("<br>Obrigada por visitar esta página!");
         }
     </script>
+    
+    <a href="index.html">Voltar</a>
 </body>
 
 </html>

@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Atividades de JavaScript</title>
 </head>
 <body>
     <h1>Semana 2</h1>
 
-    <h4>Exercício 1: Data Formatada</h4>
+    <h3>Exercício 1: Data Formatada</h3>
     <p id="data"></p>
 
-    <h4>Exercício 2: Relógio Digital</h4>
+    <h3>Exercício 2: Relógio Digital</h3>
     <div id="relogio"></div>
 
-    <h4>Exercício 3: Verificador de Palíndromo</h4>
-    <input type="text" id="textoPalindromo" placeholder="Digite uma palavra ou frase">
-    <button onclick="verificarPalindromo()">Verificar</button>
+    <h3>Exercício 3: Verificador de Palíndromo</h3>
+    <input type="text" id="palindromo" class="campo" placeholder="Digite uma palavra ou frase">
+    <button class="botao" onclick="verificarPalindromo()">Verificar</button>
 
     <br><br><a href="index.html">Voltar</a>
 
@@ -43,7 +44,7 @@
         
         //exercício 3
         function verificarPalindromo() {
-            const textoOriginal = document.getElementById('textoPalindromo').value;
+            const textoOriginal = document.getElementById('palindromo').value;
             const textoTratado = textoOriginal.toLowerCase().replace(/[^a-z0-9]/g, '');
             const textoInvertido = textoTratado.split('').reverse().join('');
             if (textoTratado === textoInvertido) {
