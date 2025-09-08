@@ -1,0 +1,191 @@
+body {
+    font-family: Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container h1 {
+    margin: 0;
+}
+
+.fatec-logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.cadastro {
+    width: 80%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.cadastro h1 {
+    text-align: left;
+    color: #000;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.input-field {
+    flex: 1;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.radio-option label {
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-size: 10px;
+    color: rgba(34, 34, 34, 0.9);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px 0;
+    margin-top: 5px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 12px;
+    color: #999;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 1px solid #007bff;
+}
+
+.button-group {
+    text-align: center;
+    margin-top: 30px;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+    background-color: #eee;
+    color: #222;
+    border: 1px solid #aaa;
+}
+
+.error-message {
+    color: red;
+    font-size: 10px;
+    margin-top: 5px;
+    min-height: 15px; 
+    visibility: hidden;
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.resultado {
+    width: 80%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.resultado h3 {
+    color: #333;
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.resultado h4 {
+    color: #555;
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.resultado p {
+    font-size: 12px;
+    color: rgba(34, 34, 34, 0.9);
+    margin-bottom: 5px;
+}
+
+.back-button-container {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #eee;
+    color: #222;
+    border: 1px solid #aaa;
+    text-decoration: none;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.footer-container {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}

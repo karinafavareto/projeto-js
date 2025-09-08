@@ -14,16 +14,23 @@ body {
     min-height: 100vh;
     margin: 0;
     text-align: center;
+    padding-top: 80px; /* Adiciona espaço para o header fixo */
+    padding-bottom: 50px; /* Adiciona espaço para o footer fixo */
 }
 
 .header-container {
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 10px 0;
+    padding: 10px 5%;
     border-bottom: 2px solid #F5C45E;
+    position: fixed; /* Torna o header fixo */
+    top: 0; /* Fixa no topo da página */
+    left: 0;
+    background-color: #102E50; /* Garante que o fundo não seja transparente */
+    z-index: 1000; /* Garante que o header fique acima de outros elementos */
+    box-sizing: border-box;
 }
 
 .header-container h1 {
@@ -92,9 +99,16 @@ a:hover {
 }
 
 .footer-container {
-    margin-top: 50px;
+    width: 100%;
+    text-align: center;
     font-size: 0.9rem;
     color: #E78B48;
+    position: fixed; /* Torna o footer fixo */
+    bottom: 0; /* Fixa na parte inferior da página */
+    left: 0;
+    padding: 10px 0;
+    background-color: #102E50;
+    z-index: 1000;
 }
 
 /* Estilos para as páginas de semanas (semana01, semana02, semana03) */
