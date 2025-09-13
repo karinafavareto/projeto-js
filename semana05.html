@@ -14,6 +14,9 @@
 
     <h1>Semana 5</h1>
 
+    <div id="contador" class="toolbox-section">
+        </div>
+
     <br><a href="index.html">Voltar</a>
     <footer>
         <div class="footer-container">
@@ -22,9 +25,142 @@
     </footer>
 
     <script>
+        let homem = 0;
+        let mulher = 0;
+        let total = 0;
+
+        const contador = document.getElementById('contador');
+
+        const secaoTotal = document.createElement('section');
+        secaoTotal.classList.add('total-box');
+        contador.appendChild(secaoTotal);
+
+        const tituloTotal = document.createElement('h1');
+        secaoTotal.appendChild(tituloTotal);
+        tituloTotal.textContent = "Total";
+
+        const numTotal = document.createElement('h2');
+        secaoTotal.appendChild(numTotal);
+        numTotal.textContent = "0";
         
+
+        const secoesDeContagem = document.createElement('div');
+        secoesDeContagem.classList.add('contadores-container');
+        contador.appendChild(secoesDeContagem);
+
+  
+        const secaoHomens = document.createElement('section');
+        secaoHomens.classList.add('gender-box');
+        secoesDeContagem.appendChild(secaoHomens);
+
+        const iconeHomem = document.createElement('div');
+        iconeHomem.classList.add('icone-container');
+        secaoHomens.appendChild(iconeHomem);
+        
+        const imagemHomem = document.createElement('img');
+        imagemHomem.src = "https://cdni.iconscout.com/illustration/premium/thumb/man-illustration-svg-download-png-4651649.png";
+        imagemHomem.alt = "Ícone de um homem";
+        iconeHomem.appendChild(imagemHomem);
+
+        const botoesHomem = document.createElement('div');
+        botoesHomem.classList.add('buttons-row');
+        secaoHomens.appendChild(botoesHomem);
+
+        const addHomem = document.createElement('button');
+        addHomem.id = "adicionar-homem";
+        addHomem.textContent = "+";
+        addHomem.classList.add('add-button');
+        botoesHomem.appendChild(addHomem);
+
+        const rmHomem = document.createElement('button');
+        rmHomem.id = "remover-homem";
+        rmHomem.textContent = "-";
+        rmHomem.classList.add('remove-button');
+        botoesHomem.appendChild(rmHomem);
+        
+        const tituloHomem = document.createElement('h3');
+        secaoHomens.appendChild(tituloHomem);
+        tituloHomem.textContent = "Homens";
+
+        const numHomem = document.createElement('h4');
+        secaoHomens.appendChild(numHomem);
+        numHomem.textContent = "0";
+        
+
+        const secaoMulheres = document.createElement('section');
+        secaoMulheres.classList.add('gender-box');
+        secoesDeContagem.appendChild(secaoMulheres);
+        
+        const iconeMulher = document.createElement('div');
+        iconeMulher.classList.add('icone-container');
+        secaoMulheres.appendChild(iconeMulher);
+
+        const imagemMulher = document.createElement('img');
+        imagemMulher.src = "https://cdni.iconscout.com/illustration/premium/thumb/girl-illustration-svg-download-png-4651652.png";
+        imagemMulher.alt = "Ícone de uma mulher";
+        iconeMulher.appendChild(imagemMulher);
+        
+        const botoesMulher = document.createElement('div');
+        botoesMulher.classList.add('buttons-row');
+        secaoMulheres.appendChild(botoesMulher);
+
+        const addMulher = document.createElement('button');
+        addMulher.id = "adicionar-mulher";
+        addMulher.textContent = "+";
+        addMulher.classList.add('add-button');
+        botoesMulher.appendChild(addMulher);
+
+        const rmMulher = document.createElement('button');
+        rmMulher.id = "remover-mulher";
+        rmMulher.textContent = "-";
+        rmMulher.classList.add('remove-button');
+        botoesMulher.appendChild(rmMulher);
+
+        const tituloMulher = document.createElement('h3');
+        secaoMulheres.appendChild(tituloMulher);
+        tituloMulher.textContent = "Mulheres";
+
+        const numMulher = document.createElement('h4');
+        secaoMulheres.appendChild(numMulher);
+        numMulher.textContent = "0";
+        
+        function adicionarHomem(){
+            homem += 1;
+            total += 1;
+            numHomem.textContent = homem;
+            numTotal.textContent = total;
+        }
+
+        function removerHomem(){
+            if(homem > 0){
+                homem -= 1;
+                total -= 1;
+            }
+            numHomem.textContent = homem;
+            numTotal.textContent = total;
+        }
+
+        function adicionarMulher(){
+            mulher += 1;
+            total += 1;
+            numMulher.textContent = mulher;
+            numTotal.textContent = total;     
+        }
+
+        function removerMulher(){
+            if(mulher > 0){
+                mulher -= 1;
+                total -= 1;
+            }
+            numMulher.textContent = mulher;
+            numTotal.textContent = total; 
+        }
+
+        addHomem.addEventListener('click', adicionarHomem);
+        rmHomem.addEventListener('click', removerHomem);
+        addMulher.addEventListener('click', adicionarMulher);
+        rmMulher.addEventListener('click', removerMulher);
+
     </script>
-    
-    <a href="index.html">Voltar</a>
 </body>
 </html>
