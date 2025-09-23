@@ -15,7 +15,7 @@ body {
     margin: 0;
     text-align: center;
     padding-top: 80px;
-    padding-bottom: 50px;
+    padding-bottom: 80px; /* Aumentado para garantir espaço para o footer */
 }
 
 .header-container {
@@ -111,6 +111,7 @@ a:hover {
     z-index: 1000;
 }
 
+/* Estilos para as páginas de semanas (semana01, semana02, semana03) */
 .content-area {
     width: 80%;
     max-width: 800px;
@@ -152,8 +153,31 @@ input[type="text"]:focus, input[type="number"]:focus {
     border-color: #BE3D2A;
 }
 
+/* Alteração para criar espaço visual entre as seções */
 .content-area > h4:not(:first-of-type) {
     margin-top: 40px;
+}
+
+button {
+    background-color: #E78B48;
+    color: #102E50;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 5px;
+    width: 90%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: #BE3D2A;
+    color: #102E50;
+    transform: translateY(-3px);
 }
 
 hr {
@@ -162,12 +186,108 @@ hr {
     margin: 30px 0;
 }
 
-/* Estilos para o layout principal do contador (a grande caixa) */
+/* Estilos para o novo layout do toolbox */
+.toolbox {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.toolbox-section {
+    background-color: rgba(245, 196, 94, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos para os títulos dentro das seções do toolbox */
+.toolbox-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #F5C45E;
+}
+
+/* Estilos específicos para a playlist (semana03.html) */
+#lista {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left;
+}
+
+#lista li {
+    background-color: rgba(231, 139, 72, 0.1);
+    border: 1px solid #E78B48;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    flex-wrap: wrap;
+}
+
+#lista li:hover {
+    background-color: rgba(231, 139, 72, 0.2);
+}
+
+#lista li:before {
+    content: "🎶";
+    margin-right: 10px;
+    color: #F5C45E;
+}
+
+.item-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.edit-button, .delete-button {
+    background-color: #E78B48;
+    color: #102E50;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: #BE3D2A;
+    transform: translateY(-2px);
+}
+
+.delete-button {
+    background-color: #BE3D2A;
+    color: #102E50;
+}
+
+.delete-button:hover {
+    background-color: #E78B48;
+    transform: translateY(-2px);
+}
+
+#mensagem {
+    color: #E78B48;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* Estilos para o layout do contador (semana05.html) */
 #contador {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0; /* Diminuindo o espaço entre os elementos da caixa */
+    gap: 0;
     margin-top: 30px;
     width: 90%;
     max-width: 380px;
@@ -177,17 +297,15 @@ hr {
     box-shadow: 0 0 15px #F5C45E;
 }
 
-/* Container para os blocos de homens e mulheres ficarem lado a lado */
 .contadores-container {
     display: flex;
     flex-direction: row;
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 10px; /* Mantém um pequeno espaço entre Total e os blocos de gênero */
+    margin-top: 10px;
 }
 
-/* Estilo para os blocos individuais de homens e mulheres */
 .gender-box {
     display: flex;
     flex-direction: column;
@@ -195,7 +313,6 @@ hr {
     text-align: center;
 }
 
-/* Títulos e números */
 #contador h1 {
     color: #E78B48;
     font-size: 2.2rem;
@@ -214,7 +331,7 @@ hr {
 #contador h3 {
     color: #F5C45E;
     font-size: 1.2rem;
-    margin-top: 5px; /* Diminuindo o espaço acima dos títulos de gênero */
+    margin-top: 5px;
     margin-bottom: 5px;
 }
 
@@ -228,11 +345,11 @@ hr {
     width: 50px;
 }
 
-/* Estilos para os botões de adicionar e remover */
-.add-button {
-    background-color: #F5C45E;
-    color: #102E50;
-    border: none;
+/* Centraliza os símbolos dos botões de adição e remoção */
+.add-button, .remove-button {
+    display: grid;
+    place-content: center;
+    padding: 0;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -243,18 +360,16 @@ hr {
     margin: 0 5px;
 }
 
+.add-button {
+    background-color: #F5C45E;
+    color: #102E50;
+    border: none;
+}
+
 .remove-button {
     background-color: #BE3D2A;
     color: #102E50;
     border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    margin: 0 5px;
 }
 
 .add-button:hover {
@@ -267,17 +382,15 @@ hr {
     transform: scale(1.05);
 }
 
-/* Organiza os botões em linha */
 .buttons-row {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 5px; /* Diminuindo a margem superior dos botões */
+    margin-top: 5px;
     margin-bottom: 5px;
 }
 
-/* Estilo para o espaço das imagens */
 .icone-container {
     width: 120px;
     height: 120px;
@@ -291,10 +404,80 @@ hr {
     border: 2px solid #F5C45E;
 }
 
-/* Regra para as imagens dentro do container */
 .icone-container img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
     border-radius: 50%;
+}
+
+/* Estilos específicos para a calculadora */
+#calculator-container {
+    width: 320px;
+    background-color: #102E50;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    box-shadow: 0 0 15px #F5C45E;
+    box-sizing: border-box;
+}
+
+#display {
+    grid-column: span 4;
+    background-color: #E78B48;
+    color: #102E50;
+    font-size: 3em;
+    padding: 20px;
+    text-align: right;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+#calculator-container button {
+    background-color: #F5C45E;
+    color: #102E50;
+    border: none;
+    padding: 20px;
+    font-size: 1.5em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+#calculator-container button:hover {
+    background-color: #BE3D2A;
+    transform: scale(1.05);
+}
+
+.operator {
+    background-color: #E78B48;
+}
+
+.operator:hover {
+    background-color: #BE3D2A;
+}
+
+.equals {
+    background-color: #E78B48;
+}
+
+.equals:hover {
+    background-color: #BE3D2A;
+}
+
+.large-button {
+    grid-column: span 2;
+}
+
+/* A nova regra para o botão Voltar */
+.back-button-container {
+    margin-top: 40px; /* Garante que o container tenha um espaço em cima */
+    margin-bottom: 80px; /* Adiciona o espaço necessário para o footer fixo */
 }

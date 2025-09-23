@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+/* Paleta de Cores: #102E50, #F5C45E, #E78B48, #BE3D2A */
+
+/* Estilos globais para a página */
+body {
+    font-family: 'Varela Round', sans-serif;
+    background-color: #102E50;
+    color: #E78B48;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    border-bottom: 2px solid #F5C45E;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #102E50;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.header-container h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #F5C45E;
+}
+
+.header-container .fatec-logo {
+    width: 50px;
+    height: 50px;
+    background-color: #BE3D2A;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #102E50;
+    font-weight: bold;
+}
+
+/* Estilos específicos para a calculadora */
+.content-area {
+    width: 80%;
+    max-width: 800px;
+    background-color: rgba(231, 139, 72, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px #E78B48;
+    margin-top: 20px;
+}
+
+#calculator-container {
+    width: 320px; /* Ajuste para ter espaço para os botões */
+    background-color: #102E50;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px; /* Aumenta o padding para evitar o "esmagamento" */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    box-shadow: 0 0 15px #F5C45E;
+    box-sizing: border-box;
+}
+
+#display {
+    grid-column: span 4;
+    background-color: #E78B48;
+    color: #102E50;
+    font-size: 3em;
+    padding: 20px;
+    text-align: right;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden; /* Garante que o texto não saia do limite */
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+#calculator-container button {
+    background-color: #F5C45E;
+    color: #102E50;
+    border: none;
+    padding: 20px;
+    font-size: 1.5em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+#calculator-container button:hover {
+    background-color: #BE3D2A;
+    transform: scale(1.05);
+}
+
+.operator {
+    background-color: #E78B48;
+}
+
+.operator:hover {
+    background-color: #BE3D2A;
+}
+
+.equals {
+    background-color: #E78B48;
+}
+
+.equals:hover {
+    background-color: #BE3D2A;
+}
+
+.large-button {
+    grid-column: span 2;
+}
+
+a {
+    text-decoration: none;
+    color: #102E50;
+    background-color: #E78B48;
+    padding: 15px 30px;
+    border-radius: 10px;
+    display: inline-block;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+a:hover {
+    background-color: #BE3D2A;
+    color: #102E50;
+    transform: scale(1.05);
+}
+
+.footer-container {
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #E78B48;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 10px 0;
+    background-color: #102E50;
+    z-index: 1000;
+}

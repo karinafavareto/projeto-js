@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividades de JavaScript</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Calculadora</title>
+
+    <link rel="stylesheet" href="assets/calculadora.css">
 </head>
 <body>
     <header class="header-container">
@@ -14,15 +15,159 @@
 
     <h1>Semana 6</h1>
 
-    <br><a href="index.html">Voltar</a>
+    <div id="calculator-container" class="toolbox-section">
+    </div>
+
+    <div class="back-button-container">
+        <a href="index.html" class="back-button">Voltar</a>
+      </div>
+
     <footer>
         <div class="footer-container">
             <p>Laboratório de Engenharia de Software</p>
         </div>
     </footer>
-
+</body>
+</html>  
     <script>
-        
+    // A CLASSE CALCULADORA
+    // Ela vai guardar o estado da calculadora e a lógica das operações.
+    class Calculator {
+        constructor(displayElement) {
+            this.displayElement = displayElement;
+            this.clear();
+        }   
+        // Limpa todas as propriedades, voltando ao estado inicial
+        clear() {
+            this.currentOperand = '';
+            this.previousOperand = '';
+            this.operation = undefined;
+        }   
+        // Adiciona um dígito ou ponto ao display
+        appendNumber(number) {
+            if (number === ',' && this.currentOperand.includes('.')) return;
+            if (number === ',') {
+                this.currentOperand = this.currentOperand.toString() + '.';
+            } else {
+                this.currentOperand = this.currentOperand.toString() + number.toString();
+            }
+        }   
+        // MÉTODOS PARA OPERAÇÕES ESPECIAIS
+        toggleSign() {
+        this.currentOperand = (parseFloat(this.currentOperand) * -1).toString();
+        }   
+        getPercentage() {
+        this.currentOperand = (parseFloat(this.currentOperand) / 100).toString();
+        }   
+        // Define qual operação será feita (+, -, X, ÷)
+        chooseOperation(operation) {
+            if (this.currentOperand === '' && this.previousOperand === '') return;
+            if (this.previousOperand !== '') {
+                this.compute();
+            }
+            this.operation = operation;
+            this.previousOperand = this.currentOperand;
+            this.currentOperand = '';
+        }   
+        // Executa o cálculo final
+        compute() {
+            let computation;
+            const prev = parseFloat(this.previousOperand);
+            const current = parseFloat(this.currentOperand);
+            if (isNaN(prev) || isNaN(current)) return;  
+            switch (this.operation) {
+                case '+':
+                    computation = prev + current;
+                    break;
+                case '-':
+                    computation = prev - current;
+                    break;
+                case 'X':
+                    computation = prev * current;
+                    break;
+                case '÷':
+                    computation = prev / current;
+                    break;
+                default:
+                    return;
+            }
+            this.currentOperand = computation;
+            this.operation = undefined;
+            this.previousOperand = '';
+        }   
+        // Atualiza o texto do display
+        updateDisplay() {
+        let displayValue = '';
+        if (this.currentOperand !== '') {
+        displayValue = this.currentOperand;
+        } else if (this.operation !== undefined) {
+        displayValue = this.previousOperand;
+        } else {
+        displayValue = '0';
+        }
+            this.displayElement.textContent = displayValue;
+        }
+    }   
+    // GERAÇÃO DOS ELEMENTOS HTML DINAMICAMENTE
+    const calculatorContainer = document.getElementById('calculator-container');    
+    // 1. Cria o display da calculadora
+    const display = document.createElement('div');
+    display.id = 'display';
+    display.textContent = '0';
+    calculatorContainer.appendChild(display);   
+    // 2. Cria a lista de botões
+    const buttonLabels = [
+        'AC', '+/-', '%', '÷',
+        '7', '8', '9', 'X',
+        '4', '5', '6', '-',
+        '1', '2', '3', '+',
+        '0', ',', '='
+    ];  
+    // 3. Cria a instância da nossa classe
+    const calculator = new Calculator(display); 
+    // 4. Cria e configura os botões usando o loop forEach
+    buttonLabels.forEach(label => {
+        const button = document.createElement('button');
+        button.textContent = label; 
+        // Adiciona classes para estilização
+        if (['÷', 'X', '-', '+', '='].includes(label)) {
+            button.classList.add('operator');
+        }
+        if (label === '0') {
+            button.classList.add('large-button');
+        }
+        if (label === '=') {
+            button.classList.add('equals');
+        }   
+        // Adiciona um "ouvinte de eventos" para cada botão
+        button.addEventListener('click', () => {
+            if (!isNaN(label) || label === ',') {
+                // Se for um número, adiciona ao display
+                calculator.appendNumber(label);
+                calculator.updateDisplay();
+        } else if (label === '+/-') {
+        calculator.toggleSign();
+        calculator.updateDisplay();
+        } else if (label === '%') {
+        calculator.getPercentage();
+        calculator.updateDisplay();
+            } else if (['+', '-', 'X', '÷'].includes(label)) {
+                // Se for um operador, escolhe a operação
+                calculator.chooseOperation(label);
+                calculator.updateDisplay();
+            } else if (label === '=') {
+                // Se for igual, faz o cálculo
+                calculator.compute();
+                calculator.updateDisplay();
+            } else if (label === 'AC') {
+                // Se for 'AC', limpa a calculadora
+                calculator.clear();
+                calculator.updateDisplay();
+            }
+        }); 
+        // Adiciona o botão na div principal
+        calculatorContainer.appendChild(button);
+    });
     </script>
 
 </body>
