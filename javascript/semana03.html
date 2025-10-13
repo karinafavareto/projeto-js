@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>Atividades de JavaScript</title>
+</head>
+<body>
+    <header class="header-container">
+        <h1>Análise e Desenvolvimento de Sistemas</h1>
+        <div class="fatec-logo">ADS</div>
+    </header>
+
+    <div class="container">
+        <h1 class="title-main">Crie sua playlist!</h1>
+        
+        <div class="toolbox">
+            <div class="toolbox-section">
+                <h3>Adicionar Música</h3>
+                <input type="text" id="titulo" placeholder="Título da música">
+                <input type="text" id="artista" placeholder="Artista">
+                <button onclick="adicionar()">Adicionar</button>
+            </div>
+
+            <div class="toolbox-section">
+                <h3>Gerenciar Playlist</h3>
+                <input type="text" id="gerenciarMusica" placeholder="Título para filtrar">
+                <button onclick="filtrar()">Filtrar</button>
+                <button onclick="ordenar()">Ordenar</button>
+                <button onclick="mostrar()">Mostrar Completa</button>
+            </div>
+        </div>
+
+        <p id="mensagem"></p>
+
+        <ul id="lista"></ul>
+    </div>
+
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">Voltar</a>
+      </div>
+
+    <footer>
+        <div class="footer-container">
+            <p>Laboratório de Engenharia de Software</p>
+        </div>
+    </footer>
+
+    <script>
+        const playlist = [];
+        const mensagemElemento = document.getElementById('mensagem');
+
+        function adicionar() {
+            const titulo = document.getElementById('titulo').value;
+            const artista = document.getElementById('artista').value;
+
+            if (titulo && artista) {
+                const musica = { titulo: titulo, artista: artista };
+                playlist.push(musica);
+                mensagemElemento.textContent = `"${titulo}" de ${artista} foi adicionada.`;
+                document.getElementById('titulo').value = '';
+                document.getElementById('artista').value = '';
+                mostrar();
+            } else {
+                mensagemElemento.textContent = 'Por favor, preencha todos os campos.';
+            }
+        }
+
+        function excluir(index) {
+            const tituloExcluido = playlist[index].titulo;
+            playlist.splice(index, 1);
+            mensagemElemento.textContent = `"${tituloExcluido}" foi removida.`;
+            mostrar();
+        }
+
+        function editar(index) {
+            const musicaAntiga = playlist[index];
+            const novoTitulo = prompt("Digite o novo título da música:", musicaAntiga.titulo);
+            const novoArtista = prompt("Digite o novo artista:", musicaAntiga.artista);
+
+            if (novoTitulo && novoArtista) {
+                playlist[index].titulo = novoTitulo;
+                playlist[index].artista = novoArtista;
+                mensagemElemento.textContent = `"${musicaAntiga.titulo}" foi editada.`;
+                mostrar();
+            } else {
+                mensagemElemento.textContent = 'Edição cancelada ou campos vazios.';
+            }
+        }
+
+        function ordenar() {
+            playlist.sort((a, b) => a.titulo.localeCompare(b.titulo));
+            mensagemElemento.textContent = 'Playlist ordenada por título.';
+            mostrar();
+        }
+
+        function filtrar() {
+            const termo = document.getElementById('gerenciarMusica').value.toLowerCase();
+            
+            if (termo) {
+                const resultadoFiltrado = playlist.filter(musica => 
+                    musica.titulo.toLowerCase().includes(termo) || musica.artista.toLowerCase().includes(termo)
+                );
+
+                mensagemElemento.textContent = `Exibindo ${resultadoFiltrado.length} resultado(s) para "${termo}".`;
+                mostrar(resultadoFiltrado);
+            } else {
+                mensagemElemento.textContent = 'Por favor, digite um termo para filtrar.';
+                mostrar();
+            }
+        }
+
+        function mostrar(listaParaExibir = playlist) {
+            const listaElemento = document.getElementById('lista');
+            listaElemento.innerHTML = '';
+
+            if (listaParaExibir.length === 0) {
+                mensagemElemento.textContent = 'A playlist está vazia.';
+            } else {
+                listaParaExibir.forEach((musica, index) => {
+                    const item = document.createElement("li");
+                    const textoMusica = document.createElement("span");
+                    textoMusica.textContent = `${musica.titulo} - ${musica.artista}`;
+
+                    const botoes = document.createElement("div");
+                    botoes.className = "item-actions";
+
+                    const botaoEditar = document.createElement("button");
+                    botaoEditar.className = "edit-button";
+                    botaoEditar.textContent = "Editar";
+                    botaoEditar.onclick = () => editar(playlist.indexOf(musica));
+
+                    const botaoExcluir = document.createElement("button");
+                    botaoExcluir.className = "delete-button";
+                    botaoExcluir.textContent = "Excluir";
+                    botaoExcluir.onclick = () => excluir(playlist.indexOf(musica));
+                    
+                    botoes.appendChild(botaoEditar);
+                    botoes.appendChild(botaoExcluir);
+                    
+                    item.appendChild(textoMusica);
+                    item.appendChild(botoes);
+                    listaElemento.appendChild(item);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

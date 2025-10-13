@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>Atividades de JavaScript</title>
+</head>
+<body>
+    <header class="header-container">
+        <h1>Análise e Desenvolvimento de Sistemas</h1>
+        <div class="fatec-logo">ADS</div>
+    </header>
+
+    <h1>Semana 2</h1>
+
+    <h3>Exercício 1: Data Formatada</h3>
+    <p id="data"></p>
+
+    <h3>Exercício 2: Relógio Digital</h3>
+    <div id="relogio"></div>
+
+    <h3>Exercício 3: Verificador de Palíndromo</h3>
+    <input type="text" id="palindromo" class="campo" placeholder="Digite uma palavra ou frase">
+    <button class="botao" onclick="verificarPalindromo()">Verificar</button>
+
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">Voltar</a>
+      </div>
+      
+    <footer>
+        <div class="footer-container">
+            <p>Laboratório de Engenharia de Software</p>
+        </div>
+    </footer>
+
+    <script>
+
+        //exercício 1
+        const hoje = new Date();
+        const opcoesData = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        };
+        const dataFormatada = hoje.toLocaleDateString('pt-BR', opcoesData);
+        document.getElementById('data').innerHTML = dataFormatada;
+
+        //exercício 2
+        function atualizarRelogio() {
+            const agora = new Date();
+            const horaFormatada = agora.toLocaleTimeString('pt-BR');
+            document.getElementById('relogio').innerHTML = horaFormatada;
+        }
+        setInterval(atualizarRelogio, 1000);
+        
+        //exercício 3
+        function verificarPalindromo() {
+            const textoOriginal = document.getElementById('palindromo').value;
+            const textoTratado = textoOriginal.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const textoInvertido = textoTratado.split('').reverse().join('');
+            if (textoTratado === textoInvertido) {
+                alert('"' + textoOriginal + '" é um palíndromo!');
+            } else {
+                alert('"' + textoOriginal + '" não é um palíndromo.');
+            }
+        }
+    </script>
+</body>
+</html>
